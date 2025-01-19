@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:news/api/api_manager.dart';
 import 'package:news/model/SourceResponse.dart';
+import 'package:news/ui/category/category_tabs.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
 
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceResponse?>
@@ -23,8 +29,13 @@ class CategoryScreen extends StatelessWidget {
         else if(snapshot.hasError){
           return Column(
             children: [
-              Text('Something went wrong.'),
-              ElevatedButton(onPressed: (){}, child: Text('Try again',),)
+              Text('Something went wrong.', style: Theme.of(context).textTheme.headlineMedium,),
+              ElevatedButton(onPressed: (){
+                ApiManager.getSources();
+                setState(() {
+                  
+                });
+              }, child: Text('Try again', style: Theme.of(context).textTheme.headlineMedium,),)
             ],
           );
         }
@@ -32,17 +43,19 @@ class CategoryScreen extends StatelessWidget {
         if(snapshot.data!.status == 'error'){
           return Column(
             children: [
-              Text(snapshot.data!.message!),
-              ElevatedButton(onPressed: (){}, child: Text('Try again',),)
+              Text(snapshot.data!.message!, style: Theme.of(context).textTheme.headlineMedium,),
+              ElevatedButton(onPressed: (){
+                ApiManager.getSources();
+                setState(() {
+                  
+                });
+              }, child: Text('Try again', style: Theme.of(context).textTheme.headlineMedium,),)
             ],
           );
         }
         //todo: success
         var sourcesList = snapshot.data!.sources!;
-        return ListView.builder(itemBuilder: (context,index){
-          return Text(sourcesList[index].name??'');
-        },
-        itemCount: sourcesList.length,);
+        return CategoryTabs(sourcesList: sourcesList);
       }
     );
   }
