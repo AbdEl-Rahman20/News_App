@@ -1,6 +1,6 @@
 class SourceResponse {
   String? status;
-  List<Sources>? sources;
+  List<Source>? sources;
   String? code;
   String? message;
 
@@ -11,9 +11,9 @@ class SourceResponse {
     code = json['code'];
     message = json['message'];
     if (json['sources'] != null) {
-      sources = <Sources>[];
+      sources = <Source>[];
       json['sources'].forEach((v) {
-        sources!.add(new Sources.fromJson(v));
+        sources!.add(new Source.fromJson(v));
       });
     }
   }
@@ -28,7 +28,7 @@ class SourceResponse {
   }
 }
 
-class Sources {
+class Source {
   String? id;
   String? name;
   String? description;
@@ -37,7 +37,7 @@ class Sources {
   String? language;
   String? country;
 
-  Sources(
+  Source(
       {this.id,
       this.name,
       this.description,
@@ -46,7 +46,7 @@ class Sources {
       this.language,
       this.country});
 
-  Sources.fromJson(Map<String, dynamic> json) {
+  Source.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];

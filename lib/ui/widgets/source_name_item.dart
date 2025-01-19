@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/model/SourceResponse.dart';
 
 class SourceNameItem extends StatelessWidget {
-  Sources sources;
+  Source sources;
   bool isSelected;
   SourceNameItem({required this.sources, required this.isSelected});
 

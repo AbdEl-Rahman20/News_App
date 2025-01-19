@@ -1,12 +1,18 @@
+import 'package:news/model/SourceResponse.dart';
+
 class NewsResponse {
   String? status;
   int? totalResults;
   List<Articles>? articles;
+  String? code;
+  String? message;
 
-  NewsResponse({this.status, this.totalResults, this.articles});
+  NewsResponse({this.status, this.totalResults, this.articles, this.code, this.message});
 
   NewsResponse.fromJson(Map<String, dynamic> json) {
     status = json['status'];
+    code = json['code'];
+    message = json['message'];
     totalResults = json['totalResults'];
     if (json['articles'] != null) {
       articles = <Articles>[];
@@ -71,25 +77,6 @@ class Articles {
     data['urlToImage'] = this.urlToImage;
     data['publishedAt'] = this.publishedAt;
     data['content'] = this.content;
-    return data;
-  }
-}
-
-class Source {
-  String? id;
-  String? name;
-
-  Source({this.id, this.name});
-
-  Source.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
     return data;
   }
 }
