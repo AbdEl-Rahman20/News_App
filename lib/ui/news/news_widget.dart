@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/model/NewsResponse.dart';
 
@@ -30,14 +30,7 @@ class NewsWidget extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: CachedNetworkImage(
-              imageUrl: news.urlToImage??'',
-              placeholder: (context, url) => Center(
-                child: CircularProgressIndicator(
-                  color: Colors.grey,
-                )),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
+            child: Image.network(news.urlToImage??''),
           ),
           SizedBox(height: height * 0.02,),
           Text(news.title??'',style: Theme.of(context).textTheme.headlineLarge,),
@@ -53,3 +46,14 @@ class NewsWidget extends StatelessWidget {
     );
   }
 }
+
+
+
+            //         CachedNetworkImage(
+            //   imageUrl: news.urlToImage??'',
+            //   placeholder: (context, url) => Center(
+            //     child: CircularProgressIndicator(
+            //       color: Colors.grey,
+            //     )),
+            //   errorWidget: (context, url, error) => Icon(Icons.error),
+            // ),
