@@ -10,6 +10,7 @@ class AppTheme{
       headlineLarge: TextStyle(fontSize: 20,color: Colors.black, fontWeight: FontWeight.bold,),
       headlineMedium: TextStyle(fontSize: 16,color: Colors.black, fontWeight: FontWeight.bold,),
       headlineSmall: TextStyle(fontSize: 14,color: Colors.black, fontWeight: FontWeight.bold,),
+      labelLarge: TextStyle(fontSize: 12,color: Colors.grey, fontWeight: FontWeight.bold,),
     )
   );
 
@@ -22,6 +23,7 @@ class AppTheme{
       headlineLarge: TextStyle(fontSize: 20,color: Colors.white, fontWeight: FontWeight.bold,),
       headlineMedium: TextStyle(fontSize: 16,color: Colors.white, fontWeight: FontWeight.bold,),
       headlineSmall: TextStyle(fontSize: 14,color: Colors.white, fontWeight: FontWeight.bold,),
+      labelLarge: TextStyle(fontSize: 12,color: Colors.grey, fontWeight: FontWeight.bold,),
     )
   );
 }
