@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news/ui/category/category_screen.dart';
+import 'package:news/ui/category/category_fragment.dart';
+import 'package:news/ui/widgets/drawer.dart';
+// import 'package:news/ui/category/category_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = 'home_screen';
@@ -9,7 +11,11 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home',style: Theme.of(context).textTheme.headlineLarge,),
       ),
-      body: CategoryScreen(),
+      drawer: Drawer(
+        backgroundColor: Colors.black,
+        child: HomeDrawer(),
+      ),
+      body: CategoryFragment(),
     );
   }
 }
