@@ -4,6 +4,8 @@ import 'package:toggle_switch/toggle_switch.dart';
 
 class CategoryFragment extends StatelessWidget {
   List <CategoryModel> categoriesList = [];
+  Function onViewAllClicked;
+  CategoryFragment({required this.onViewAllClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +62,9 @@ class CategoryFragment extends StatelessWidget {
                           ),
                         ],
                         radiusStyle: true,
-                        onToggle: (index) {
+                        onToggle: (index1) {
                           print('switched to: $index');
+                          onViewAllClicked(categoriesList[index]);
                         },
                       ),
                     ),

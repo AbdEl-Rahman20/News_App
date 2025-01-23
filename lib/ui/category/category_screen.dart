@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:news/api/api_manager.dart';
 import 'package:news/model/SourceResponse.dart';
+import 'package:news/model/category_model.dart';
 import 'package:news/ui/category/category_tabs.dart';
 
 class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({super.key});
+  CategoryModel category;
+  CategoryScreen({required this.category});
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
@@ -15,7 +17,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return FutureBuilder<SourceResponse?>
     (
-      future: ApiManager.getSources(),
+      future: ApiManager.getSources(widget.category.id),
       builder: (context,snapshot){
         //todo: loading...
         if(snapshot.connectionState == ConnectionState.waiting){
@@ -31,7 +33,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             children: [
               Text('Something went wrong.', style: Theme.of(context).textTheme.headlineMedium,),
               ElevatedButton(onPressed: (){
-                ApiManager.getSources();
+                ApiManager.getSources(widget.category.id);
                 setState(() {
                   
                 });
@@ -45,7 +47,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             children: [
               Text(snapshot.data!.message!, style: Theme.of(context).textTheme.headlineMedium,),
               ElevatedButton(onPressed: (){
-                ApiManager.getSources();
+                ApiManager.getSources(widget.category.id);
                 setState(() {
                   
                 });
